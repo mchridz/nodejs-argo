@@ -33,13 +33,14 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build and push Docker image
+          permissions: write-all
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ github.repository_owner }}/railway:2024
+            ghcr.io/${{ github.repository_owner }}/railway:2025
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.description=HTTP Server
